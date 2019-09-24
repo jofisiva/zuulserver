@@ -1,0 +1,22 @@
+server:
+  port: 5771
+zuul:
+  routes:
+    user-client:
+      path:/users-api/**
+      url:http://localhost:8081/
+eureka:
+  client:
+    instance:
+      preferIpAddress:true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: zuulserver
+    zipkin:
+      enabled: true
+      base-url: http://localhost:9411/
+    sleuth:
+      sampler:
+        probability: 1.0
